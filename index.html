@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Panel- Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    /* Premium palette */
+    --bg: #080b13;           /* deeper navy background */
+    --text: #f7fafc;         /* crisp text */
+    --muted: #a0aec0;        /* softer muted text */
+    --card: #0f1420;         /* card surface */
+    --radius: 14px;
+
+    /* Brand accents (golden) */
+    --brand-1: #f59e0b;      /* amber/gold */
+    --brand-2: #facc15;      /* brighter gold */
+    --brand-3: #fef08a;      /* soft highlight */
+  }
+
+  * {box-sizing: border-box; margin: 0; padding: 0;}
+  body {
+    background:
+      radial-gradient(circle at 30% 10%, #0e1526 0%, var(--bg) 70%),
+      linear-gradient(180deg, #070a12, #080b13);
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+    line-height: 1.6;
+  }
+
+  header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 24px;
+    background: rgba(12, 16, 26, 0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  /* BRAND name with premium gold text */
+  .brand {
+    font-weight: 800; font-size: 18px;
+    background: linear-gradient(90deg, var(--brand-2), var(--brand-1), var(--brand-3));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    letter-spacing: .3px;
+  }
+
+  .chip {
+    background: rgba(250, 204, 21, 0.13); /* gold tint */
+    color: #facc15;
+    font-size: 11px; padding: 5px 10px; border-radius: 999px;
+    font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+    border: 1px solid rgba(250, 204, 21, 0.25);
+  }
+
+  .hero {display: grid; place-items: center; padding: 48px 16px;}
+  .hero-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border-radius: 20px; padding: 48px 16px; max-width: 720px; width: 100%;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    text-align: center; position: relative;
+  }
+  .hero-card::after {
+    content: ""; position: absolute; inset: -2px; border-radius: 22px; padding: 2px;
+    background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0.35;
+  }
+  /* HERO title with premium gold text */
+  .hero-card h1 {
+    font-size: clamp(26px,6.8vw,52px); font-weight: 800;
+    background: linear-gradient(90deg, var(--brand-3), var(--brand-2), var(--brand-1));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    letter-spacing: .2px;
+  }
+
+  .actions {display: flex; justify-content: center; margin: 22px 0;}
+  .btn {
+    background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+    color: #0a0d16; /* dark text on gold for contrast */
+    border: 1px solid rgba(250, 204, 21, 0.35);
+    border-radius: 12px;
+    font-weight: 800; letter-spacing: .02em;
+    font-size: 14px; padding: 12px 20px;
+    cursor: pointer; text-decoration: none;
+    box-shadow: 0 8px 26px rgba(250, 204, 21, 0.25);
+    transition: transform .2s ease, box-shadow .25s ease, filter .2s ease;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(250, 204, 21, 0.35);
+    filter: brightness(1.03);
+  }
+
+  main {max-width: 1100px; margin: 0 auto; padding: 0 16px 60px;}
+  .section {margin: 32px 0;}
+  .section-title {
+    text-align: center; font-weight: 800; font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.3em;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 999px;
+    padding: 10px 14px; margin-bottom: 16px;
+  }
+
+  .grid {display: grid; gap: 14px;}
+
+  /* Offer Card */
+  .offer {
+    position: relative; background: var(--card);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding-left: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    transition: transform .2s, box-shadow .25s, border-color .25s;
+  }
+  .offer:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.6);
+    border-color: rgba(250, 204, 21, 0.25);
+  }
+  .offer a {display:block; text-decoration:none; color:var(--text); padding:14px 14px 14px 20px;}
+  .offer-title {font-weight:700;font-size:15px;margin-bottom:6px;}
+  .offer small {color:var(--muted);font-size:13px;}
+  .pill {
+    background: rgba(250, 204, 21, 0.10);
+    border: 1px solid rgba(250, 204, 21, 0.35);
+    padding: 2px 6px; border-radius: 999px;
+    font-size: 11px; margin-left: 6px;
+    color: var(--brand-3);
+  }
+
+  /* === Premium Mixed + Animated Color Bars (SINGLE definitive block) === */
+  .us::before, .uk::before, .au::before, .ch::before {
+    content:"";
+    position:absolute;
+    left:0; top:10px; bottom:10px;
+    width:5px; border-radius:8px;
+    background-size: 200% 200%;
+    animation: glowMove 4s ease infinite;
+    box-shadow: 0 0 12px rgba(255,255,255,0.12);
+  }
+  .us::before { background-image: linear-gradient(180deg, #3b82f6, #6366f1, #8b5cf6); }
+  .uk::before { background-image: linear-gradient(180deg, #f97316, #f59e0b, #facc15); }
+  .au::before { background-image: linear-gradient(180deg, #10b981, #22d3ee, #34d399); }
+  .ch::before { background-image: linear-gradient(180deg, #a855f7, #ec4899, #8b5cf6); }
+
+  @keyframes glowMove {
+    0% { background-position: 0% 0%; box-shadow: 0 0 6px rgba(255,255,255,0.1); }
+    50% { background-position: 100% 100%; box-shadow: 0 0 14px rgba(255,255,255,0.25); }
+    100% { background-position: 0% 0%; box-shadow: 0 0 6px rgba(255,255,255,0.1); }
+  }
+
+  footer {
+    text-align:center; padding:18px; font-size:12px;
+    color:var(--muted); border-top:1px solid rgba(255,255,255,0.08);
+  }
+</style>
+
+</head>
+<body>
+<header>
+  <div class="brand">Panel-28</div>
+  <span class="chip">Ashikur</span>
+</header>
+
+<section class="hero">
+  <div class="hero-card"><h1>Panel-28</h1></div>
+</section>
+
+<div class="actions">
+  <a href="https://www.ip-score.com" target="_blank" rel="noopener noreferrer" class="btn">IP-Score</a>
+</div>
+
+<main>
+  <!-- UNITED STATES -->
+  <div class="section">
+    <div class="section-title">United States</div>
+    <div class="grid">
+      <div class="offer us">
+        <a href="" target="_blank">
+          <div class="offer-title">
+            (7) Chick Fil A 100
+            <span class="pill">CTC</span>
+          </div>
+          <small>$3.20 </small>
+        </a>
+      </div>
+	  <div class="grid">
+      <div class="offer uk">
+        <a href="" target="_blank">
+          <div class="offer-title">(576) Paypal 100 <span class="pill">CTC</span></div>
+          <small>$3.28 </small>
+        </a>
+    </div>
+	<div class="grid">
+      <div class="offer au">
+        <a href="" target="_blank">
+          <div class="offer-title">(663) Cash App 750 <span class="pill">CTC</span></div>
+          <small>$3.28 </small>
+        </a>
+      </div>
+	  <div class="grid">
+      <div class="offer ch">
+        <a href="" target="_blank">
+          <div class="offer-title">(91) Taco Bell 100 <span class="pill">CTC</span></div>
+          <small>$3.36 </small>
+        </a>
+      </div>
+	  <div class="grid">
+      <div class="offer us">
+        <a href="" target="_blank">
+          <div class="offer-title"> (62) Prizegrab - 7 Eleven Giftcard <span class="pill">CTC</span>
+          </div>
+          <small>$3.32 </small>
+        </a>
+      </div>
+	  <div class="grid">
+      <div class="offer uk">
+        <a href="" target="_blank">
+          <div class="offer-title"> (556) CTCon - Roblox $50 <span class="pill">CTC</span></div>
+          <small>$3.28 </small>
+        </a>
+    </div>
+	<div class="grid">
+      <div class="offer au">
+        <a href="" target="_blank">
+          <div class="offer-title">(14086) Playstation Gift 100 <span class="pill">CTC</span></div>
+          <small>$3.20 </small>
+        </a>
+      </div>
+	  <div class="grid">
+      <div class="offer ch">
+        <a href="" target="_blank">
+          <div class="offer-title"> (15267) NFL Shop $100 <span class="pill">CTC</span></div>
+          <small>$2.56 </small>
+        </a>
+      </div>
+	  <div class="grid">
+      <div class="offer us">
+        <a href="" target="_blank">
+          <div class="offer-title"> (11788) CashApp 750 <span class="pill">CTC</span>
+          </div>
+          <small>$2.00 </small>
+        </a>
+      </div>
+  </div>
+
+  <!-- UNITED KINGDOM -->
+  <div class="section">
+    <div class="section-title">Trendn Daily</div>
+    <div class="grid">
+      <div class="grid">
+      <div class="offer au">
+        <a href="" target="_blank">
+          <div class="offer-title">(15082) Win a Free $1000 Gift Card <span class="pill">TDY</span></div>
+          <small>$2.16 </small>
+        </a>
+      </div>
+      <div class="offer uk">
+        <a href="" target="_blank">
+          <div class="offer-title">(1610) Get 500$ LuluLemon Giftcard <span class="pill">TDY</span></div>
+          <small>$2.40 </small>
+        </a>
+      </div>
+     </div>
+	  <div class="grid">
+      <div class="offer ch">
+        <a href="" target="_blank">
+          <div class="offer-title">(3706) Win a $500 Cash Prize <span class="pill">TDY</span></div>
+          <small>$1.92 </small>
+        </a>
+      </div>
+	  </div>
+      <div class="offer uk">
+        <a href="" target="_blank">
+          <div class="offer-title"> (1511) TheAmerican Win a Carribean Getaway for Two ($2.40) <span class="pill">TDY</span></div>
+          <small>$2.40 </small>
+        </a>
+      </div>
+	  <div class="grid">
+      <div class="offer us">
+        <a href="" target="_blank">
+          <div class="offer-title"> (15278) Get Mystery Box <span class="pill">TDY</span>
+          </div>
+          <small>$2.16 </small>
+        </a>
+      </div>
+	  <div class="offer au">
+        <a href="" target="_blank">
+          <div class="offer-title"> (1882) Win Free Nike Shoes <span class="pill">TDY</span></div>
+          <small>$2.40 </small>
+        </a>
+      </div>
+    </div>
+  </div>
+  </div>
+</main>
+
+<footer>
+  © 2025 Panel-28 Premium Offers • Ashikur Rahman Ashik .
+</footer>
+</body>
+</html>
